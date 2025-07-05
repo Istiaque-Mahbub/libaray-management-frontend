@@ -96,6 +96,17 @@ export default function AllBooksTable() {
 
         }
         </TableCell>
+
+        <TableCell className="font-medium">
+        {
+           <Link to={`/books/${book._id}`}> <Button variant="link" className="text-green-500 p-0">
+        Details
+        
+        </Button>
+        </Link>
+
+        }
+        </TableCell>
       
     </TableRow>
     ))

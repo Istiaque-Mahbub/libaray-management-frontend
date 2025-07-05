@@ -34,6 +34,9 @@ export const baseApi = createApi({
       }),
       invalidatesTags: ["books"],
     }),
+    getBookByID:builder.query({
+        query:(id)=>`books/${id}`
+    })
   }),
 });
 
@@ -41,5 +44,6 @@ export const {
   useGetAllBooksQuery,
   useCreateBooksMutation,
   useDeleteBookMutation,
-  useUpdateBookMutation
+  useUpdateBookMutation,
+  useGetBookByIDQuery
 } = baseApi;

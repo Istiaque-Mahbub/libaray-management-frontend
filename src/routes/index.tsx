@@ -1,4 +1,5 @@
 import App from "@/App";
+import BookDetails from "@/modules/books/BookDetails";
 import { UpdateBookModal } from "@/modules/books/UpdateBookModal";
 import AddBooks from "@/pages/AddBooks";
 import AllBooks from "@/pages/AllBooks";
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
             {
                 path: "/edit-book/:id",
                 element: <UpdateBookModal></UpdateBookModal>
+            },
+            {
+                path: "/books/:id",
+                element: <BookDetails></BookDetails>
             },
 
         ]
