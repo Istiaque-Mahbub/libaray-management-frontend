@@ -1,69 +1,71 @@
-# React + TypeScript + Vite
+# 📚 Minimal Library Management System – Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A clean, functional client-side web application to manage books and borrow records in a minimal library system. Built using **React**, **TypeScript**, **Redux Toolkit Query (RTK Query)**, and **Tailwind CSS**. This system interacts with a RESTful API and handles CRUD operations for books and borrow functionality, all without user authentication.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Live Demo
 
-## Expanding the ESLint configuration
+🔗 **Frontend Live URL:** [https://library-management-frontend-six.vercel.app/borrow-summary](https://library-management-frontend-six.vercel.app/borrow-summary)  
+🔗 **Backend API URL:** [https://library-management-mu-six.vercel.app/](https://library-management-mu-six.vercel.app/)
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🧩 Features
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### ✅ Public Pages (No Login Required)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Accessible to all users without authentication
+- Clear navigation for all pages
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 📚 Book Management
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- View all books in a  table
+- Columns: `Title`, `Author`, `Genre`, `ISBN`, `Copies`, `Availability`, and `Actions`
+- Actions:
+  - ✏️ Edit Book
+  - 🗑️ Delete Book (with confirmation)
+  - ➕ Add Book
+  - 📦 Borrow Book (with quantity & due date form)
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 🔄 Borrow Book Logic
+
+- Borrow form validates quantity based on available copies
+- Updates book availability if copies reach 
+
+### 📊 Borrow Summary
+
+- Aggregated view of all borrowed books
+- Fields: `Title`, `ISBN`, `Total Quantity Borrowed`
+
+---
+
+## 📁 Pages & Routes
+
+| Route | Description |
+|-------|-------------|
+| `/books` | Book list with actions (view/edit/delete/borrow) |
+| `/create-book` | Form to add a new book |
+| `/books/:id` | View full details of a book |
+| `/edit-book/:id` | Edit book information |
+| `/borrow/:bookId` | Borrow form for a book |
+| `/borrow-summary` | View borrow aggregation summary |
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| Frontend | React + TypeScript |
+| State Management | Redux Toolkit + RTK Query |
+| Styling | Tailwind CSS |
+| API Integration |  fetchBaseQuery via RTK Query |
+| Routing | React Router v7 |
+| Icons | Lucide / HeroIcons / Custom SVG |
+| Forms | React Hook Form (shadcn ui) |
+
+---
+
+
+

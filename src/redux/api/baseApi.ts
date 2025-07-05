@@ -1,12 +1,11 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://library-management-mu-six.vercel.app/api",
   }),
-  tagTypes: ["books","borrow"],
+  tagTypes: ["books", "borrow", "borrowBooks"],
   endpoints: (builder) => ({
     getAllBooks: builder.query({
       query: () => "/books",
@@ -35,19 +34,31 @@ export const baseApi = createApi({
       }),
       invalidatesTags: ["books"],
     }),
-    getBookByID:builder.query({
-        query:(id)=>`books/${id}`
+    getBookByID: builder.query({
+      query: (id) => `books/${id}`,
     }),
-    borrowBook : builder.mutation({
-        query:(borrow)=>({
-            url:"/borrow",
-            method: "POST",
-            body:borrow
-        }),
-        invalidatesTags:["books","borrow"]
-    })
-  }),
+    borrowBook: builder.mutation({
+      query: (borrow) => ({
+        url: "/borrow",
+        method: "POST",
+        body: borrow,
+      }),
+      invalidatesTags: ["books", "borrow", "borrowBooks"],
+    }),
 
+    getAllBorrowBooks: builder.query({
+      query: () => "/borrow",
+      providesTags: ["borrowBooks"],
+    }),
+
+    deleteBorrowBook: builder.mutation({
+      query: (id) => ({
+        url: `/borrow/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["books", "borrow", "borrowBooks"],
+    }),
+  }),
 });
 
 export const {
@@ -56,5 +67,7 @@ export const {
   useDeleteBookMutation,
   useUpdateBookMutation,
   useGetBookByIDQuery,
-  useBorrowBookMutation
+  useBorrowBookMutation,
+  useGetAllBorrowBooksQuery,
+  useDeleteBorrowBookMutation,
 } = baseApi;
