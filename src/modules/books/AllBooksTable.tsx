@@ -6,7 +6,12 @@ import { Edit2Icon, Trash2 } from "lucide-react";
 
 
 export default function AllBooksTable() {
-    const {data,isLoading} = useGetAllBooksQuery(undefined)
+    const {data,isLoading} = useGetAllBooksQuery(undefined,{
+        pollingInterval:30000,
+        refetchOnFocus:true,
+        refetchOnMountOrArgChange:true,
+        refetchOnReconnect:true
+    })
     console.log(data,isLoading)
     if(isLoading){
         return <Loading></Loading>

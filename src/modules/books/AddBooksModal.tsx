@@ -13,18 +13,30 @@ import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, For
 import { Input } from "@/components/ui/input"
 import { useState } from "react"
 import Swal from 'sweetalert2'
-import { useForm } from "react-hook-form"
+import { useForm, type FieldValues, type SubmitHandler } from "react-hook-form"
+import { useCreateBooksMutation } from "@/redux/api/baseApi"
+import { Textarea } from "@/components/ui/textarea"
 
 
 export function AddBooksModal() {
     const form = useForm()
     const [open,setOpen] = useState(false)
+    const[createBook] = useCreateBooksMutation()
 
 
-    const onSubmit = (data:any) =>{
+
+
+
+    const onSubmit: SubmitHandler<FieldValues> = (data) =>{
         console.log(data)
-        setOpen(false)
-     if(data){
+        const book = {
+            ...data,available:true
+        }
+
+try {
+        
+     if(book ){
+        createBook(book)
            Swal.fire({
   position: "top-end",
   icon: "success",
@@ -32,7 +44,17 @@ export function AddBooksModal() {
   showConfirmButton: false,
   timer: 1500
 });
+setOpen(false)
      }
+} catch (error:any) {
+     Swal.fire({
+  position: "top-end",
+  icon: "error",
+  title: data.massage,
+  showConfirmButton: false,
+  timer: 1500
+});
+}
     }
 
 
@@ -136,7 +158,7 @@ export function AddBooksModal() {
         <FormLabel>Description</FormLabel>
         <FormControl>
             
-          <Input {...field} value={field.value ?? ""}></Input>
+          <Textarea {...field} value={field.value || ""}></Textarea>
         </FormControl>
         <FormDescription />
         <FormMessage />
