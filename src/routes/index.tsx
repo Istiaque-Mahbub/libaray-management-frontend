@@ -1,4 +1,5 @@
 import App from "@/App";
+import { UpdateBookModal } from "@/modules/books/UpdateBookModal";
 import AddBooks from "@/pages/AddBooks";
 import AllBooks from "@/pages/AllBooks";
 import BorrowBooks from "@/pages/BorrowBooks";
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
             {
                 path: "borrowBooks",
                 element: <BorrowBooks></BorrowBooks>
+            },
+            {
+                path: "/edit-book/:id",
+                element: <UpdateBookModal></UpdateBookModal>
             },
 
         ]
