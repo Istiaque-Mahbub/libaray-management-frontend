@@ -2,6 +2,7 @@ import Loading from "@/components/layout/Loading";
 import { Button } from "@/components/ui/button";
 import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { useDeleteBookMutation, useGetAllBooksQuery } from "@/redux/api/baseApi";
+import type { IBook } from "@/types";
 import { Edit2Icon, Trash2 } from "lucide-react";
 import { Link } from "react-router";
 import Swal from "sweetalert2";
@@ -71,7 +72,7 @@ export default function AllBooksTable() {
   </TableHeader>
   <TableBody>
   {
-     !isLoading && data.data.map((book:any,index:number)=>(
+     !isLoading && data.data.map((book:IBook,index:number)=>(
           <TableRow key={index}>
       <TableCell className="font-medium">{book.isbn}</TableCell>
       <TableCell className="font-medium">{book.title}</TableCell>

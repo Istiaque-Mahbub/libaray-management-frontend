@@ -19,6 +19,7 @@ import { useGetAllBooksQuery, useUpdateBookMutation } from "@/redux/api/baseApi"
 import Loading from "@/components/layout/Loading"
 import { useState } from "react"
 import Swal from "sweetalert2"
+import type { IBook } from "@/types"
 
 
 
@@ -40,7 +41,7 @@ export function UpdateBookModal() {
         return <Loading></Loading>
     }
 
-    const book = data.data.find((item: any) => item._id == id)
+    const book = data.data.find((item: IBook) => item._id == id)
 
     const defaultValues = {
 
@@ -73,14 +74,15 @@ export function UpdateBookModal() {
 
 
     return (
-        <Dialog open={open} onOpenChange={setOpen}>
+        <div className="md:max-w-7xl mx-auto flex justify-center">
+            <Dialog  open={open} onOpenChange={setOpen}>
 
             <DialogTrigger asChild>
-                <Button variant="outline">Add Books</Button>
+                <Button variant="outline">Update Book</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px]">
                 <DialogHeader>
-                    <DialogTitle>Add Your Favorite Book</DialogTitle>
+                    <DialogTitle>Update Your Book</DialogTitle>
                     <DialogDescription>
                         Add book information. Click save when you&apos;re
                         done.
@@ -217,5 +219,6 @@ export function UpdateBookModal() {
             </DialogContent>
 
         </Dialog>
+        </div>
     )
 }
