@@ -1,6 +1,7 @@
 import App from "@/App";
 import BookDetails from "@/modules/books/BookDetails";
 import { UpdateBookModal } from "@/modules/books/UpdateBookModal";
+import BorrowBook from "@/modules/borrow/BorrowBook";
 import AddBooks from "@/pages/AddBooks";
 import AllBooks from "@/pages/AllBooks";
 import BorrowBooks from "@/pages/BorrowBooks";
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
             },
 
             {
-                path: "borrowBooks",
+                path: "/borrow-summary",
                 element: <BorrowBooks></BorrowBooks>
             },
             {
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
             {
                 path: "/books/:id",
                 element: <BookDetails></BookDetails>
+            },
+            {
+                path: "/borrow/:bookId",
+                element: <BorrowBook></BorrowBook>
             },
 
         ]

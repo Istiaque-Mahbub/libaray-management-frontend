@@ -11,7 +11,7 @@ export default function NavBar() {
          <img src={book} alt="" className='w-30 h-30 flex items-center bg-transparent' /> <span className='font-bold ml-2'>Library</span>Management
          <Link className='mx-5' to='/'>All Books</Link>
          <Link className='mx-5' to='/addBooks'>Add Books</Link>
-         <Link className='mx-5' to='/borrowBooks'>Borrow Books</Link>
+         <Link className='mx-5' to='/borrow-summary'>Borrow Books</Link>
       </div>
    </nav>
    )

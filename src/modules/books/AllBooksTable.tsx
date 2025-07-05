@@ -107,6 +107,17 @@ export default function AllBooksTable() {
 
         }
         </TableCell>
+
+         <TableCell className="font-medium">
+        {
+           <Link to={`/borrow/${book._id}`}> <Button variant="link" className="text-green-500 p-0">
+        Borrow Book
+        
+        </Button>
+        </Link>
+
+        }
+        </TableCell>
       
     </TableRow>
     ))
